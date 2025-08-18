@@ -1,0 +1,30 @@
+Metadata-Version: 2.4
+Name: fast-jwt
+Version: 0.1.0
+Summary: Une bibliothèque d'authentification JWT simple pour FastAPI.
+Author-email: romeo <romeo@email.com>
+Project-URL: Homepage, https://github.com/romeo/fast-jwt
+Project-URL: Bug Tracker, https://github.com/romeo/fast-jwt/issues
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Framework :: FastAPI
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: fastapi
+Requires-Dist: httpx>=0.28.1
+Requires-Dist: pydantic
+Requires-Dist: PyJWT>=2.0.0
+Requires-Dist: pytest>=8.3.5
+Requires-Dist: setuptools>=61.0
+Requires-Dist: uvicorn>=0.33.0
+Provides-Extra: test
+Requires-Dist: pytest; extra == "test"
+Requires-Dist: httpx; extra == "test"
+Requires-Dist: uvicorn; extra == "test"
+Dynamic: license-file
+
+# Fast JWT
+
+A simple JWT authentication library for FastAPI.

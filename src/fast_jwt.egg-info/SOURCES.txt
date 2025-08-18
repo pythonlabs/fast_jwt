@@ -1,0 +1,10 @@
+LICENSE
+README.md
+pyproject.toml
+src/fast_jwt/__init__.py
+src/fast_jwt.egg-info/PKG-INFO
+src/fast_jwt.egg-info/SOURCES.txt
+src/fast_jwt.egg-info/dependency_links.txt
+src/fast_jwt.egg-info/requires.txt
+src/fast_jwt.egg-info/top_level.txt
+tests/test_auth.py
