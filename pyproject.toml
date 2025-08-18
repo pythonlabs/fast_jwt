@@ -3,10 +3,10 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "fast-jwt"
-version = "0.1.0"
+name = "fast-jwt-auth"
+version = "0.1.4"
 authors = [
-  { name="romeo", email="romeo@email.com" },
+  { name="romeo-tech", email="romeomanoela18@gmail.com" },
 ]
 description = "Une bibliothèque d'authentification JWT simple pour FastAPI."
 readme = "README.md"
@@ -18,18 +18,11 @@ classifiers = [
     "Framework :: FastAPI",
 ]
 dependencies = [
-    "fastapi",
-    "httpx>=0.28.1",
-    "pydantic",
     "PyJWT>=2.0.0",
-    "pytest>=8.3.5",
-    "setuptools>=61.0",
-    "uvicorn>=0.33.0",
 ]
 
 [project.urls]
-"Homepage" = "https://github.com/romeo/fast-jwt"
-"Bug Tracker" = "https://github.com/romeo/fast-jwt/issues"
+"Homepage" = "https://github.com/PyCoder601/fast_jwt"
 
 [project.optional-dependencies]
 test = [
