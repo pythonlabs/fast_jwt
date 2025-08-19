@@ -22,7 +22,7 @@ dependencies = [
 ]
 
 [project.urls]
-"Homepage" = "https://github.com/PyCoder601/fast_jwt"
+"Homepage" = "https://github.com/pythonlabs/fast_jwt"
 
 [project.optional-dependencies]
 test = [
