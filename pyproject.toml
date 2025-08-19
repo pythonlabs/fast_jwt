@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "fast-jwt-auth"
 version = "0.1.4"
 authors = [
-  { name="romeo-tech", email="romeomanoela18@gmail.com" },
+  { name="zafimanoela-romeo", email="romeomanoela18@gmail.com" },
 ]
 description = "Une bibliothèque d'authentification JWT simple pour FastAPI."
 readme = "README.md"

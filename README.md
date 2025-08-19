@@ -48,7 +48,8 @@ Générez des tokens d'accès et de rafraîchissement pour un utilisateur, par e
 
 ```python
 @app.post("/login")
-def login(user_id: str):
+def login(LoginRequest: LoginRequest):
+    # votre logique ici
     # Créez un token d'accès avec une expiration de 30 minutes
     access_token = fast_jwt.create_access_token(
         user_id=user_id, expires_delta=timedelta(minutes=30) # par defaut: 15 min
