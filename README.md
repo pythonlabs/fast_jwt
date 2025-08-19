@@ -3,7 +3,7 @@
 [![PyPI version](https://badge.fury.io/py/fast-jwt-auth.svg)](https://badge.fury.io/py/fast-jwt-auth)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Fast JWT est une bibliothèque d'authentification JWT simple et légère pour FastAPI. Elle fournit des dépendances faciles à utiliser pour protéger vos routes et gérer les tokens d'accès et de rafraîchissement.
+Fast JWT Auth  est une bibliothèque d'authentification JWT simple et légère pour FastAPI. Elle fournit des dépendances faciles à utiliser pour protéger vos routes et gérer les tokens d'accès et de rafraîchissement.
 
 ## ✨ Fonctionnalités
 
