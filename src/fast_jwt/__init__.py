@@ -10,32 +10,27 @@ from fastapi.security import OAuth2PasswordBearer
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
 class FastJWT:
-    def __init__(self, secret_key: str, algorithm: str = "HS256"):
+    def __init__(self, secret_key: str, algorithm: str = "HS256", access_token_expires: Optional[timedelta] = None, refresh_token_expires: Optional[timedelta] = None):
         self.secret_key = secret_key
         self.algorithm = algorithm
+        self.access_token_expires = access_token_expires or timedelta(minutes=15)
+        self.refresh_token_expires = refresh_token_expires or timedelta(days=3)
 
-    def create_access_token(self, user_id: str | int, expires_delta: Optional[timedelta] = None) -> str:
+    def create_access_token(self, user_id: str | int) -> str:
         """Crée un token d'accès."""
         to_encode = {"sub": str(user_id)}
 
-        if expires_delta:
-            expire = datetime.now(timezone.utc) + expires_delta
-        else:
-            # Par défaut, le token expire dans 15 minutes
-            expire = datetime.now(timezone.utc) + timedelta(minutes=15)
+        expire = datetime.now(timezone.utc) + self.access_token_expires
         
         to_encode.update({"exp": expire, "iat": datetime.now(timezone.utc), "jwt_type": "access_token"})
         encoded_jwt = jwt.encode(to_encode, self.secret_key, algorithm=self.algorithm)
         return encoded_jwt
 
-    def create_refresh_token(self, user_id: int | str, expires_delta: Optional[timedelta] = None) -> str:
+    def create_refresh_token(self, user_id: int | str) -> str:
         """Crée un token d'accès."""
         to_encode = {"sub": str(user_id)}
-        if expires_delta:
-            expire = datetime.now(timezone.utc) + expires_delta
-        else:
-            # Par défaut, le token expire dans 3 jours
-            expire = datetime.now(timezone.utc) + timedelta(days=3)
+
+        expire = datetime.now(timezone.utc) + self.refresh_token_expires
 
         to_encode.update({"exp": expire, "iat": datetime.now(timezone.utc), "jwt_type": "refresh_token"})
         encoded_jwt = jwt.encode(to_encode, self.secret_key, algorithm=self.algorithm)
