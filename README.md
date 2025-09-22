@@ -27,7 +27,7 @@ Voici un exemple simple de la façon d'utiliser Fast JWT dans une application Fa
 
 ### 1. Initialisation ⚙️
 
-Créez une instance de `FastJWT` avec votre clé secrète.
+Créez une instance de `FastJWT` avec votre clé secrète. Vous pouvez également configurer l'algorithme et les temps d'expiration des tokens.
 
 ```python
 from fastapi import FastAPI, Depends
@@ -36,28 +36,27 @@ from datetime import timedelta
 
 app = FastAPI()
 
-# Initialisez FastJWT avec votre clé secrète
+# Initialisez FastJWT avec votre clé secrète et des temps d'expiration personnalisés
 # ATTENTION : Ne codez jamais la clé en dur, utilisez des variables d'environnement !
 secret_key = "votre_cle_secrete_super_securisee"
-fast_jwt = FastJWT(secret_key=secret_key)
+fast_jwt = FastJWT(
+    secret_key=secret_key,
+    access_token_expires=timedelta(minutes=30),  # par défaut: 15 min
+    refresh_token_expires=timedelta(days=7)      # par défaut: 3 jours
+)
 ```
 
 ### 2. Création de Tokens 🎟️
 
-Générez des tokens d'accès et de rafraîchissement pour un utilisateur, par exemple dans une route de connexion.
+Générez des tokens d'accès et de rafraîchissement pour un utilisateur. Les temps d'expiration sont ceux définis lors de l'initialisation de `FastJWT`.
 
 ```python
 @app.post("/login")
 def login(LoginRequest: LoginRequest):
     # votre logique ici
-    # Créez un token d'accès avec une expiration de 30 minutes
-    access_token = fast_jwt.create_access_token(
-        user_id=user_id, expires_delta=timedelta(minutes=30) # par defaut: 15 min
-    )
-    # Créez un token de rafraîchissement avec une expiration de 7 jours
-    refresh_token = fast_jwt.create_refresh_token(
-        user_id=user_id, expires_delta=timedelta(days=7) # par default: 3 jours
-    )
+    # Créez des tokens d'accès et de rafraîchissement
+    access_token = fast_jwt.create_access_token(user_id=user_id)
+    refresh_token = fast_jwt.create_refresh_token(user_id=user_id)
     return {"access_token": access_token, "refresh_token": refresh_token}
 ```
 
